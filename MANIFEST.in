@@ -1,0 +1,4 @@
+include humidifier/schema.sql
+graft humidifier/static
+graft humidifier/templates
+global-exclude *.pyc
