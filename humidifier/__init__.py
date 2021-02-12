@@ -2,6 +2,12 @@ import os
 import threading
 from flask import Flask
 
+def start_logger():
+    from . import logger
+    thread = threading.Thread(target=logger.start_monitoring)
+    thread.start()
+
+
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config = True)
     app.config.from_mapping(
@@ -9,9 +15,6 @@ def create_app(test_config=None):
         DATABASE=os.path.join(app.instance_path, 'humidifier.sqlite')
     )
 
-    from . import logger
-    thread = threading.Thread(target=logger.start_monitoring)
-    thread.start()
 
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)

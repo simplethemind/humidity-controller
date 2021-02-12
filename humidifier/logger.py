@@ -29,15 +29,16 @@ def start_monitoring():
         pass
     
     while True:
-        if reader.in_waiting > 0:
+        serialLine = ''
+        while serialLine == '':
             serialLine = reader.readline().decode('utf-8').rstrip()
-            timestampLine = datetime.datetime.now().strftime('%x %X')
-            print(timestampLine + ',' + serialLine)
-            if not os.path.exists(fullFilepath):
-                with open(fullFilepath, 'x') as f:
-                    pass
-            with open(fullFilepath, 'a') as f:
-                f.write(timestampLine + "," + serialLine + '\r\n')
+        timestampLine = datetime.datetime.now().strftime('%x %X')
+        print(timestampLine + ',' + serialLine)
+        if not os.path.exists(fullFilepath):
+            with open(fullFilepath, 'x') as f:
+                pass
+        with open(fullFilepath, 'a') as f:
+            f.write(timestampLine + "," + serialLine + '\r\n')
 
 if __name__ == '__main__':
     start_monitoring()
