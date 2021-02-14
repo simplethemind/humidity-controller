@@ -13,4 +13,10 @@ bp = Blueprint('panel', __name__)
 
 @bp.route('/')
 def show_panel():
-    return render_template('panel/panel.html')
+    endTimePoint = datetime.now()
+    startTimePoint = endTimePoint - timedelta(days=1)
+    timeframe = [startTimePoint, endTimePoint]
+    logsList = grapher.GetLogsInTimeframe(timeframe)
+    dataPoints = grapher.CombineLogs(logsList, timeframe)
+    html_str = grapher.PlotDataMPLToHTML(dataPoints)
+    return render_template('panel/panel.html', panel=html_str)

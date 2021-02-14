@@ -33,8 +33,8 @@ def create_app(test_config=None):
     app.register_blueprint(panel.bp)
     app.add_url_rule('/', endpoint='index')
 
-    with app.app_context():
-        from . import dashboard
-        app = dashboard.init_dashboard(app)
+    # with app.app_context():
+    #     from . import dashboard
+    #     app = dashboard.init_dashboard(app)
 
-        return app
+    #     return app
