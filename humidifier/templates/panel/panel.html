@@ -6,11 +6,9 @@
 
 {% block content %}
   {{panel|safe}}
-  <form method="POST" action="/">
-    <input type="submit" value="4 ore" name="1/6day">
-    <input type="submit" value="O zi" name="1day">
-    <input type="submit" value="3 zile" name="3days">
-    <input type="submit" value="7 zile" name="7days">
-    <input type="submit" value="30 de zile" name="30days">
-  </form>
+  <a href="panel?value=h4" class="btn btn-primary">4 ore</a>
+  <a href="panel?value=d1" class="btn btn-primary">O zi</a>
+  <a href="panel?value=d3" class="btn btn-primary">3 zile</a>
+  <a href="panel?value=d7" class="btn btn-primary">7 zile</a>
+  <a href="panel?value=d30" class="btn btn-primary">30 de zile</a>
 {% endblock %}
