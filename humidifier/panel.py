@@ -11,10 +11,22 @@ import dash_html_components as html
 
 bp = Blueprint('panel', __name__)
 
-@bp.route('/')
+@bp.route('/', methods=['GET', 'POST'])
 def show_panel():
+    timeDelta = timedelta(days=7)
+    if request.method == 'POST':
+        if '1/6day' in request.form:
+            timeDelta = timedelta(hours=4)
+        if '1day' in request.form:
+            timeDelta = timedelta(days=1)
+        elif '3days' in request.form:
+            timeDelta = timedelta(days=3)
+        elif '7days' in request.form:
+            timeDelta = timedelta(days=7)
+        elif '30days' in request.form:
+            timeDelta = timedelta(days=30)
     endTimePoint = datetime.now()
-    startTimePoint = endTimePoint - timedelta(days=1)
+    startTimePoint = endTimePoint - timeDelta
     timeframe = [startTimePoint, endTimePoint]
     logsList = grapher.GetLogsInTimeframe(timeframe)
     dataPoints = grapher.CombineLogs(logsList, timeframe)

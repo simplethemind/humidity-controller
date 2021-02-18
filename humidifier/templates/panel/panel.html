@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Graph view{% endblock %}</h1>
+  <h1>{% block title %}Grafic umiditate{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  {{panel}}
+  {{panel|safe}}
+  <form method="POST" action="/">
+    <input type="submit" value="4 ore" name="1/6day">
+    <input type="submit" value="O zi" name="1day">
+    <input type="submit" value="3 zile" name="3days">
+    <input type="submit" value="7 zile" name="7days">
+    <input type="submit" value="30 de zile" name="30days">
+  </form>
 {% endblock %}

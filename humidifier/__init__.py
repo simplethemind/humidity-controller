@@ -37,4 +37,4 @@ def create_app(test_config=None):
     #     from . import dashboard
     #     app = dashboard.init_dashboard(app)
 
-    #     return app
+    return app
