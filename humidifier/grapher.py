@@ -140,7 +140,7 @@ def PlotDataMPLToHTML(dataPoints):
         timescale.append(parsedDate)
     # timescale = [datetime.datetime.strptime(date, '%m/%d/%y %H:%M:%S') for date in swap[0]]
     dates = matplotlib.dates.date2num(timescale)
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=[9.28, 4.8])
     plt.rcParams.update({'figure.autolayout': True})
     p1 = ax.plot_date(dates, swap[1], color='red', linestyle='solid', marker=None, label='Mentă')
     p2 = ax.plot_date(dates, swap[2], color='green', linestyle='solid', marker=None, label='Yucca')

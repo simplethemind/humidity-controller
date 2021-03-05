@@ -36,7 +36,7 @@ class ReverseProxied(object):
         return self.app(environ, start_response)
         
 def start_logger():
-    from . import logger
+    from .arduinoSerial import logger
     thread = threading.Thread(target=logger.start_monitoring)
     thread.start()
 
